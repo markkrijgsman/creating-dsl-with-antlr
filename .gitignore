@@ -1,0 +1,7 @@
+.idea/
+*.iml
+
+assignment-*/gen/
+assignment-*/target/
+
+*.tokens
