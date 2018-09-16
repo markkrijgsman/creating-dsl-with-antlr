@@ -1,6 +1,6 @@
 grammar HelloGrammar;
 
-greeting : ; /* TODO: Define parser rule */
+greeting : 'Hello' NAME;
 
-NAME : /* TODO: Define lexer rule */;
+NAME : [A-z]+;
 WS : [ \t\r\n]+ -> skip ; // skip whitespace

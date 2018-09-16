@@ -1,7 +1,7 @@
 lexer grammar KeyValuePairLexer;
 
-KEY         : ; /* TODO: Define lexer rule */
-TERM        : ; /* TODO: Define lexer rule */
+KEY         : [A-Z]([A-Z0-9])+;
+TERM        : [a-z]([a-z0-9])+;
 
 COMBINATOR  : [,];
 SEPARATOR   : [:];
