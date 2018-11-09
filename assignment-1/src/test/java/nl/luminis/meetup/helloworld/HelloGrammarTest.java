@@ -26,6 +26,15 @@ public class HelloGrammarTest {
         assertThat(greeting.NAME().getText()).isEqualTo("Name");
     }
 
+    @Test
+    public void testHelloInvalidName() {
+        HelloGrammarParser parser = createParser("Hello N[ame");
+
+        HelloGrammarParser.GreetingContext greeting = parser.greeting();
+
+        assertThat(greeting.NAME().getText()).isNotEqualTo("N[ame");
+    }
+
     private HelloGrammarParser createParser(String input) {
         HelloGrammarLexer lexer = new HelloGrammarLexer(CharStreams.fromString(input));
 

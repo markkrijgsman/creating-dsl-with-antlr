@@ -61,11 +61,35 @@ public class KeyValuePairGrammarTest {
     }
 
     @Test
+    public void testKeyShouldBeUpperCaseOnly() {
+        KeyValuePairGrammarParser parser = createParser("(Key:value)");
+
+        ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
+        assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:1 - token recognition error at: 'Ke'");
+    }
+
+    @Test
     public void testInvalidKeyValuePairKey() {
         KeyValuePairGrammarParser parser = createParser("(9KEY:value)");
 
         ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
         assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:1 - token recognition error at: '9'");
+    }
+
+    @Test
+    public void testValueShouldBeLowerCaseOnly() {
+        KeyValuePairGrammarParser parser = createParser("(KEY:Value)");
+
+        ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
+        assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:5 - token recognition error at: 'Va'");
+    }
+
+    @Test
+    public void testValueShouldNotEndWithComma() {
+        KeyValuePairGrammarParser parser = createParser("(KEY:value1,value2,)");
+
+        ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
+        assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:19 - missing TERM at ')'");
     }
 
     @Test

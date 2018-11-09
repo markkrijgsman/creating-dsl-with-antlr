@@ -2,5 +2,5 @@ grammar KeyValuePairGrammar;
 import KeyValuePairLexer;
 
 query   : pair+;
-pair    : ; /* TODO: Define parser rule */
-value   : ; /* TODO: Define parser rule */
+pair    : ; /* TODO: Define grammar rule */
+value   : ; /* TODO: Define grammar rule */
