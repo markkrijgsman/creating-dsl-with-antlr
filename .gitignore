@@ -4,4 +4,7 @@
 assignment-*/gen/
 assignment-*/target/
 
+example/target/
+example/gen/
+
 *.tokens

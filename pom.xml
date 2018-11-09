@@ -12,6 +12,7 @@
         <module>assignment-1</module>
         <module>assignment-2</module>
         <module>assignment-3</module>
+        <module>example</module>
     </modules>
 
     <properties>
