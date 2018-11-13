@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mvn clean install
+./mvnw clean test

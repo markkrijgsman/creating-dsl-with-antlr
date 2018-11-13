@@ -7,7 +7,7 @@ It's recommended to first define the missing parser and lexer rules so that the 
 Afterwards you can improve your rules so that the tests pass.
 
 ## Assignment 1
-This is a simple grammar consisting of one parser rule and two lexer rules. 
+This is a simple grammar consisting of one grammar rule and two lexer rules. 
 A valid sentence in this grammar begins with "Hello", followed by a string that can contain lowercase and uppercase characters.  
 
 Valid examples are:
@@ -34,16 +34,21 @@ It uses the same grammar as assignment 2, so you can reuse the parser and lexer 
 We have added a visitor class that needs to be implemented. This visitor converts our key-value pairs to Elasticsearch queries.
 
 ## Extra assignments
-Expand the grammar defined in the previous assignment. Add boolean logic to combine our key-value pairs and reflect this in the resulting Elasticsearch queries.
+1: Expand the grammar defined in the previous assignment. Add boolean logic to combine our key-value pairs and reflect this in the resulting Elasticsearch queries.
 
 Valid examples are:
 * `(KEY1:value1) AND (KEY2:value2)`
 * `(KEY1:value1) OR (KEY2:value2)`
 
-If there is still time left, introduce nesting for your key-value pairs and reflect this in the resulting Elasticsearch queries.
+2: Introduce nesting for your key-value pairs and reflect this in the resulting Elasticsearch queries.
 
 Valid examples are:
 * `(KEY1:value1) AND ((KEY2:value1) OR (KEY2:value2))`
+
+3: Expand the definition of a term to include diacritics such as à and ë in a generic way. Don't forget to write additional testing for these new cases.
+
+Valid examples are:
+* `(KEY:väƛȗé)`
 
 ## Tips
 Compiling the Maven module after every grammar change can be tedious. 
@@ -60,5 +65,6 @@ The ANTLR Preview toobar will appear. Enter your query and observe the parse tre
 
 ## Further reading
 
+* [ANTLR development tools](http://www.antlr.org/tools.html)
 * [ANTLR4 documentation (Github)](https://github.com/antlr/antlr4/blob/master/doc/index.md)
 * [The Definitive ANTLR 4 Reference (book)](https://pragprog.com/book/tpantlr2/the-definitive-antlr-4-reference)
