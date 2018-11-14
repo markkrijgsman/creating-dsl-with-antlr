@@ -1,5 +1,6 @@
 package nl.luminis.meetup.visitor;
 
+import static java.util.stream.Collectors.joining;
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.elasticsearch.index.query.AbstractQueryBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchNoneQueryBuilder;
@@ -56,7 +58,7 @@ public class QueryParser {
         @Override
         public AbstractQueryBuilder visitPair(KeyValuePairGrammarParser.PairContext ctx) {
             String key = ctx.KEY().getText();
-            String value = ctx.value().getText().replace(",", " ");
+            String value = ctx.value().TERM().stream().map(ParseTree::getText).collect(joining(" "));
 
             return QueryBuilders.matchQuery(key, value);
         }
