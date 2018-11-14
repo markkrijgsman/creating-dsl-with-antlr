@@ -65,7 +65,6 @@ public class KeyValuePairGrammarTest {
         KeyValuePairGrammarParser parser = createParser("(Key:value)");
 
         ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
-        assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:1 - token recognition error at: 'Ke'");
     }
 
     @Test
@@ -81,7 +80,6 @@ public class KeyValuePairGrammarTest {
         KeyValuePairGrammarParser parser = createParser("(KEY:Value)");
 
         ParseCancellationException exception = assertThrows(ParseCancellationException.class, parser::query);
-        assertThat(exception.getMessage()).isEqualTo("Error occurred at line 1:5 - token recognition error at: 'Va'");
     }
 
     @Test
